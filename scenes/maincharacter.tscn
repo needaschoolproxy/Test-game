@@ -355,5 +355,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="PickupLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 21.0
+offset_right = 20.0
+offset_bottom = 44.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout"]

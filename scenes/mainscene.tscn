@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://c8t6xo7xcl14s"]
 
-[ext_resource type="Script" uid="uid://xvbibjhay6hm" path="res://scenes/game_manager.gd" id="1_4c2fu"]
 [ext_resource type="PackedScene" uid="uid://cosrkhugvwqfj" path="res://scenes/maincharacter.tscn" id="1_golqe"]
+[ext_resource type="Script" uid="uid://xvbibjhay6hm" path="res://scenes/game_manager.gd" id="1_nx3wj"]
 [ext_resource type="PackedScene" uid="uid://dtuau4xvhbpj4" path="res://scenes/pickup.tscn" id="2_4c2fu"]
 [ext_resource type="Texture2D" uid="uid://du6ow1v644q0f" path="res://assets/placeholderfloor.png" id="2_nx3wj"]
 
@@ -16,7 +16,7 @@ sources/0 = SubResource("TileSetAtlasSource_golqe")
 [node name="Node2D" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_4c2fu")
+script = ExtResource("1_nx3wj")
 pickup_scene = ExtResource("2_4c2fu")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_golqe")]
