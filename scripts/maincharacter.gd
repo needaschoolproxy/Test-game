@@ -39,7 +39,7 @@ func get_input() -> Vector2:
 		input.y += 1
 	if Input.is_action_pressed("up"):
 		input.y -= 1
-	if Input.is_action_pressed("sprint"):
+	if Input.is_action_pressed("sprint") and stamina > 0:
 		SPEED = 300
 		stamina -= 1
 	else: SPEED = 200
@@ -119,6 +119,6 @@ func _update_ui():
 	if pickup_label:
 		pickup_label.text = str(pickup_count)
 
-func _process(delta: float) -> void:
-	if not Input.is_action_pressed("sprint"):
+func _process(_delta: float) -> void:
+	if not Input.is_action_pressed("sprint") and stamina < 100: 
 		stamina += 0.5
