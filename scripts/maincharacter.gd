@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-# movement of everything
-const SPEED = 200.0
+var stamina = 100
+var SPEED = 200.0
 const ACCELERATION = 0.5
 const FRICTION = 0.2
 var SWING_OFFSET = 30
@@ -39,10 +39,14 @@ func get_input() -> Vector2:
 		input.y += 1
 	if Input.is_action_pressed("up"):
 		input.y -= 1
+	if Input.is_action_pressed("sprint"):
+		SPEED = 300
+		stamina -= 1
+	else: SPEED = 200
 	return input
 
 #physics
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction = get_input()
 	if is_swinging:
 		velocity = Vector2.ZERO
@@ -114,3 +118,7 @@ func _screen_shake():
 func _update_ui():
 	if pickup_label:
 		pickup_label.text = str(pickup_count)
+
+func _process(delta: float) -> void:
+	if not Input.is_action_pressed("sprint"):
+		stamina += 0.5

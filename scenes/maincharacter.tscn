@@ -1,7 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://cosrkhugvwqfj"]
+[gd_scene load_steps=45 format=3 uid="uid://cosrkhugvwqfj"]
 
 [ext_resource type="Script" uid="uid://m743ifhjrdbh" path="res://scripts/maincharacter.gd" id="1_0aigr"]
 [ext_resource type="Texture2D" uid="uid://brvdrm67mo4lk" path="res://Sprites/Sprite-0003-sheet.png" id="2_0aigr"]
+[ext_resource type="FontFile" uid="uid://2abf7m1kg5x5" path="res://assets/Daydream DEMO.otf" id="3_gm7jl"]
+[ext_resource type="Script" uid="uid://bjrrl2e2c8xms" path="res://scenes/progress_bar.gd" id="4_7qgm7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqk66"]
 atlas = ExtResource("2_0aigr")
@@ -324,6 +326,9 @@ size = Vector2(26, 34.875)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2gkk"]
 size = Vector2(44, 12)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bx0f"]
+bg_color = Color(0.596075, 0.860935, 0.910249, 1)
+
 [node name="PLAYER" type="CharacterBody2D" groups=["player"]]
 collision_mask = 2
 motion_mode = 1
@@ -358,10 +363,24 @@ offset_bottom = 40.0
 
 [node name="PickupLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 161.0
-offset_top = -103.0
-offset_right = 201.0
-offset_bottom = -80.0
+offset_left = -181.0
+offset_top = -107.0
+offset_right = -123.0
+offset_bottom = -55.0
+theme_override_fonts/font = ExtResource("3_gm7jl")
+theme_override_font_sizes/font_size = 24
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 23.0
+offset_right = 103.0
+offset_bottom = 50.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/fill = SubResource("StyleBoxFlat_7bx0f")
+rounded = true
+show_percentage = false
+script = ExtResource("4_7qgm7")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout"]
