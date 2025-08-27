@@ -1,14 +1,15 @@
 extends Node
 
-var rand_x
-var rand_y
+@export var pickup_scene: PackedScene  
 
 func _ready():
 	randomize()
 	for i in range(200):
 		var rock = preload("res://scenes/rock.tscn").instantiate()
-		rand_x = randf_range(-2000,2000)
-		rand_y = randf_range(-2000,2000)
-		rock.global_position = Vector2(rand_x,rand_y)
+		var rand_x = randf_range(-2000, 2000)
+		var rand_y = randf_range(-2000, 2000)
+		rock.global_position = Vector2(rand_x, rand_y)
+		if rock.has_method("take_damage"):
+			rock.max_hp = randi() % 3 + 1  #hp(1 to 3)
+			rock.drops_pickup = pickup_scene
 		add_child(rock)
-	
