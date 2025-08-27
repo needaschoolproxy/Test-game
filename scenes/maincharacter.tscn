@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://m743ifhjrdbh" path="res://scripts/maincharacter.gd" id="1_0aigr"]
 [ext_resource type="Texture2D" uid="uid://brvdrm67mo4lk" path="res://Sprites/Sprite-0003-sheet.png" id="2_0aigr"]
 [ext_resource type="FontFile" uid="uid://2abf7m1kg5x5" path="res://assets/Daydream DEMO.otf" id="3_gm7jl"]
-[ext_resource type="Script" uid="uid://bjrrl2e2c8xms" path="res://scenes/progress_bar.gd" id="4_7qgm7"]
+[ext_resource type="Script" path="res://scenes/progress_bar.gd" id="4_7qgm7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqk66"]
 atlas = ExtResource("2_0aigr")
