@@ -1,4 +1,4 @@
-extends Area2D 
+extends Area2D
 
 @export var amount: int = 1
 var magnet_speed: float = 200.0
@@ -17,7 +17,7 @@ func _physics_process(delta):
 	if dir.length() < 200:
 		global_position += dir.normalized() * magnet_speed * delta
 
-func _on_body_entered(body):
+func _on_body_entered(body: Node):
 	if body.is_in_group("player"):
 		body.pickup_count += amount
 		body._update_ui()
