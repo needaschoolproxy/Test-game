@@ -10,6 +10,6 @@ func _ready():
 		var rand_y = randf_range(-2000, 2000)
 		rock.global_position = Vector2(rand_x, rand_y)
 		if rock.has_method("take_damage"):
-			rock.max_hp = randi() % 3 + 2  #hp(2 to 3)
+			rock.max_hp = randi() % 3 + 2  #hp(2 to 3)a
 			rock.drops_pickup = pickup_scene
 		add_child(rock)
