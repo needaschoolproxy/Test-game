@@ -22,7 +22,7 @@ func get_input() -> Vector2:
 		input.y -= 1
 	return input
 
-func _process(delta):
+func _process(_delta):
 	var direction = get_input()
 	
 	#movement when swinging

@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://b02g81q2yqkhp"]
+
+[ext_resource type="Script" uid="uid://dq6mll1xx02r2" path="res://scenes/goober.gd" id="1_vvpo2"]
+[ext_resource type="Texture2D" uid="uid://crdk0140r872j" path="res://assets/goober.png" id="1_x715e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vvpo2"]
+radius = 3.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3vwa"]
+atlas = ExtResource("1_x715e")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mjgc"]
+atlas = ExtResource("1_x715e")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lts8"]
+atlas = ExtResource("1_x715e")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpql0"]
+atlas = ExtResource("1_x715e")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qy7ev"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3vwa")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mjgc")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lts8")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpql0")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+motion_mode = 1
+script = ExtResource("1_vvpo2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_vvpo2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qy7ev")
+animation = &"down"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
