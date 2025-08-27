@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://c8t6xo7xcl14s"]
+[gd_scene load_steps=7 format=4 uid="uid://c8t6xo7xcl14s"]
 
 [ext_resource type="Script" uid="uid://xvbibjhay6hm" path="res://scripts/game_manager.gd" id="1_4c2fu"]
 [ext_resource type="PackedScene" uid="uid://cosrkhugvwqfj" path="res://scenes/maincharacter.tscn" id="1_golqe"]
 [ext_resource type="Texture2D" uid="uid://du6ow1v644q0f" path="res://assets/placeholderfloor.png" id="2_nx3wj"]
 [ext_resource type="PackedScene" uid="uid://b02g81q2yqkhp" path="res://scenes/goober.tscn" id="4_4c2fu"]
-[ext_resource type="PackedScene" uid="uid://b0gvtjdk0vjvg" path="res://scenes/rock.tscn" id="5_mo382"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_golqe"]
 texture = ExtResource("2_nx3wj")
@@ -39,6 +38,3 @@ tile_set = SubResource("TileSet_nx3wj")
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("4_4c2fu")]
 position = Vector2(-95, 15)
-
-[node name="Rock" parent="." instance=ExtResource("5_mo382")]
-position = Vector2(-278, 37)
