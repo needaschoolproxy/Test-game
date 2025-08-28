@@ -11,7 +11,7 @@ const ROCK_DETECT_RADIUS = 200.0
 const ATTACK_COOLDOWN = 0.5
 
 var attack_timer := 0.0
-var target_rock: Node2D = null  # Persistent target
+var target_rock: Node2D = null 
 
 func _ready() -> void:
 	timer.start()
@@ -21,31 +21,31 @@ func _process(delta):
 
 	var move_vector = Vector2.ZERO
 
-	# --- Acquire target if needed ---
+	# target rock
 	if target_rock == null or not is_instance_valid(target_rock):
 		target_rock = _get_highest_hp_rock()
 
-	# --- Move and attack ---
+	#target rock and break
 	if target_rock:
 		move_vector = (target_rock.global_position - global_position).normalized()
 		_animate_direction(move_vector)
 
-		# Attack if close enough
+		# break rock
 		if global_position.distance_to(target_rock.global_position) <= 20:
 			if target_rock.has_method("take_damage") and attack_timer <= 0:
 				var damage = _calculate_damage(target_rock)
 				target_rock.take_damage(damage)
 				attack_timer = ATTACK_COOLDOWN
 
-		# Clear target if rock is destroyed
+		#clear target
 		if target_rock.current_hp <= 0:
 			target_rock = null
 	else:
-		# Random wandering when no target
+		#wandering
 		move_vector = _get_random_direction()
 		_animate_direction(move_vector)
 
-	# --- Movement ---
+	# movement
 	if move_vector.length() > 0:
 		velocity = velocity.lerp(move_vector * SPEED, ACCELERATION)
 	else:
@@ -68,7 +68,7 @@ func _get_random_direction() -> Vector2:
 func _on_timer_timeout() -> void:
 	direction = randi_range(1, 4)
 
-# --- Find the rock with the highest HP within detection radius ---
+# find rock
 func _get_highest_hp_rock() -> Node2D:
 	var rocks = get_tree().get_nodes_in_group("rocks")
 	var best_rock: Node2D = null
