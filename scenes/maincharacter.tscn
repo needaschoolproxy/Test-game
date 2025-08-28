@@ -1,9 +1,8 @@
-[gd_scene load_steps=47 format=3 uid="uid://cosrkhugvwqfj"]
+[gd_scene load_steps=46 format=3 uid="uid://cosrkhugvwqfj"]
 
 [ext_resource type="Script" uid="uid://m743ifhjrdbh" path="res://scripts/maincharacter.gd" id="1_0aigr"]
 [ext_resource type="Texture2D" uid="uid://brvdrm67mo4lk" path="res://Sprites/Sprite-0003-sheet.png" id="2_0aigr"]
 [ext_resource type="FontFile" uid="uid://2abf7m1kg5x5" path="res://assets/Daydream DEMO.otf" id="3_gm7jl"]
-[ext_resource type="Script" uid="uid://bjrrl2e2c8xms" path="res://scenes/progress_bar.gd" id="4_7qgm7"]
 [ext_resource type="Script" uid="uid://cfs1jg46feaqq" path="res://scenes/upgrade_menu.gd" id="5_7bx0f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqk66"]
@@ -383,7 +382,6 @@ offset_bottom = 50.0
 scale = Vector2(0.4, 0.4)
 theme_override_styles/fill = SubResource("StyleBoxFlat_7bx0f")
 rounded = true
-script = ExtResource("4_7qgm7")
 
 [node name="UpgradeMenu" type="Control" parent="UI"]
 layout_mode = 3
