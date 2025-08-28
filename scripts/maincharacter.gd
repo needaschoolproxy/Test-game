@@ -15,6 +15,7 @@ var DAMAGE = 1
 @onready var camera = $Camera2D
 @onready var swing_area = $Area2D
 @onready var pickup_label = $"UI/PickupLabel" 
+@onready var progress_bar: ProgressBar = $UI/ProgressBar
 
 #state
 var facing_dir := Vector2.DOWN
@@ -39,10 +40,14 @@ func get_input() -> Vector2:
 		input.y += 1
 	if Input.is_action_pressed("up"):
 		input.y -= 1
-	if Input.is_action_pressed("sprint") and stamina > 0:
+	if Input.is_action_pressed("sprint") and stamina > 30:
 		SPEED = 300
 		stamina -= 1
-	else: SPEED = 200
+	else: if Input.is_action_pressed("sprint") and stamina > 0:
+		SPEED = 240
+		stamina -= 1
+	else: 
+		SPEED = 200 
 	return input
 
 #physics
@@ -122,3 +127,6 @@ func _update_ui():
 func _process(_delta: float) -> void:
 	if not Input.is_action_pressed("sprint") and stamina < 100: 
 		stamina += 0.5
+	if stamina == 100 and not Input.is_action_pressed("sprint"):
+		progress_bar.visible = false
+	else: progress_bar.visible = true
