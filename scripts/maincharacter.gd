@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-# ------------------------
-#stats
+
+# statss
 var stamina: float = 100
 var SPEED: float = 200.0
 const ACCELERATION: float = 0.5
@@ -10,9 +10,10 @@ var SWING_OFFSET: float = 30
 var SWING_RADIUS: float = 32
 var SHAKE_AMOUNT: float = 4
 var DAMAGE: int = 1
+var max_goobers: int = 3   # this might help u @glaggleman
 
 
-#references/variables
+# rferences / variables
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var swing_timer: Timer = $SwingTimer
 @onready var camera: Camera2D = $Camera2D
@@ -21,26 +22,24 @@ var DAMAGE: int = 1
 @onready var progressbar: ProgressBar = $"UI/ProgressBar"
 @onready var upgrade_menu: Control = $"UI/UpgradeMenu"
 
-
-#player state
+# player 
 var facing_dir: Vector2 = Vector2.DOWN
 var is_swinging: bool = false
 var pickup_count: int = 0
 
+
+# setup
 func _ready() -> void:
-	
 	swing_area.monitoring = false
 
-	
 	if not swing_timer.is_connected("timeout", Callable(self, "_on_swing_timer_timeout")):
 		swing_timer.timeout.connect(_on_swing_timer_timeout)
 
-	
 	add_to_group("player")
 	_update_ui()
 
-# ------------------------
-# inputs 
+
+# keybind handling
 func get_input() -> Vector2:
 	var input: Vector2 = Vector2.ZERO
 
@@ -53,16 +52,16 @@ func get_input() -> Vector2:
 	if Input.is_action_pressed("up"):
 		input.y -= 1
 
-	# sprint logic
+	# sprint stuff
 	if Input.is_action_pressed("sprint") and stamina > 0:
 		SPEED = 300
-		stamina -= 30 * get_process_delta_time()  # decrease per second
+		stamina -= 30 * get_process_delta_time()  
 	else:
 		SPEED = 200
 
 	return input
 
-# ------------------------
+
 # physics
 func _physics_process(delta: float) -> void:
 	var direction = get_input()
@@ -80,7 +79,7 @@ func _physics_process(delta: float) -> void:
 			play_idle_animation()
 	move_and_slide()
 
-	# swing input
+	# swing keybind
 	if Input.is_action_just_pressed("swing") and not is_swinging:
 		start_swing()
 
@@ -93,8 +92,17 @@ func _physics_process(delta: float) -> void:
 	progressbar.value = stamina
 	progressbar.visible = stamina < 100
 
+	#reset keybind
+	if Input.is_action_just_pressed("reset_game"):  
+		_reset_to_menu()
 
-# anims
+
+# reset button
+func _reset_to_menu() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn") 
+
+
+#anims
 func play_walk_animation() -> void:
 	if abs(facing_dir.x) > abs(facing_dir.y):
 		anim_sprite.play("walk_right" if facing_dir.x > 0 else "walk_left")
@@ -108,7 +116,7 @@ func play_idle_animation() -> void:
 		anim_sprite.play("idle_down" if facing_dir.y > 0 else "idle_up")
 
 
-# pick swing
+#swing
 func start_swing() -> void:
 	is_swinging = true
 	swing_area.position = facing_dir.normalized() * SWING_OFFSET
@@ -149,7 +157,8 @@ func _update_ui() -> void:
 	if pickup_label:
 		pickup_label.text = str(pickup_count)
 
-#upgrade menu
+
+# upgrade menu
 func show_upgrade_menu(station: Node) -> void:
 	if upgrade_menu:
 		upgrade_menu.open_menu(station)

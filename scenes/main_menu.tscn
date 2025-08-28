@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://bluwr6ryqpoh0"]
 
-[ext_resource type="Script" uid="uid://dibfg3ygdj1xy" path="res://scripts/button.gd" id="1_ekxnf"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://bvq13t8lv08s6" path="res://Sprites/title.png" id="1_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://dgkfcogjtb5wv" path="res://Sprites/buttonstart.png" id="2_bqqt6"]
-[ext_resource type="Script" uid="uid://shipldu0l8l6" path="res://scripts/button_2.gd" id="3_bqqt6"]
-[ext_resource type="Shader" uid="uid://wyp3ddbvynt8" path="res://assets/main_menu.gdshader" id="4_8ln24"]
+[ext_resource type="Script" path="res://scripts/button_2.gd" id="3_bqqt6"]
+[ext_resource type="Shader" path="res://assets/main_menu.gdshader" id="4_8ln24"]
 [ext_resource type="Texture2D" uid="uid://du6ow1v644q0f" path="res://assets/placeholderfloor.png" id="4_wu84c"]
 
 [sub_resource type="Animation" id="Animation_tbmy8"]
