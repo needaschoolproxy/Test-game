@@ -51,6 +51,5 @@ position = Vector2(-126, -69)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("11_0o2or")]
 enemy_scene = ExtResource("12_457mv")
-spawn_radius = 120.0
+spawn_radius = 12000.0
 max_enemies = 500
-spawn_interval = 1.0
