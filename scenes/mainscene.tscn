@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://c8t6xo7xcl14s"]
+[gd_scene load_steps=17 format=4 uid="uid://c8t6xo7xcl14s"]
 
 [ext_resource type="Script" uid="uid://xvbibjhay6hm" path="res://scripts/Rockmanager.gd" id="1_4c2fu"]
 [ext_resource type="PackedScene" uid="uid://cosrkhugvwqfj" path="res://scenes/maincharacter.tscn" id="1_golqe"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bwf3bmio45gbq" path="res://scenes/upgrade_station.tscn" id="6_nshjd"]
 [ext_resource type="Script" uid="uid://dxyfcqmoqmdwm" path="res://scripts/gamemanager.gd" id="7_0o2or"]
 [ext_resource type="PackedScene" uid="uid://cit38ar2k1hpr" path="res://scenes/goober_spawner.tscn" id="11_xl61e"]
+[ext_resource type="PackedScene" uid="uid://dmnpiaq81pkvk" path="res://scenes/enemy_spawner.tscn" id="13_457mv"]
+[ext_resource type="PackedScene" uid="uid://b5jxgskexp43" path="res://scenes/enemy.tscn" id="14_l58e3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_golqe"]
 texture = ExtResource("2_nx3wj")
@@ -58,3 +60,7 @@ position = Vector2(-126, -69)
 
 [node name="GooberSpawner" parent="." instance=ExtResource("11_xl61e")]
 position = Vector2(6, -92)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("13_457mv")]
+enemy_scene = ExtResource("14_l58e3")
+spawn_interval = 0.01
