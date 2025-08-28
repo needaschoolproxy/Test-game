@@ -1,51 +1,45 @@
 extends CharacterBody2D
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
 
-var direction = 1
-const SPEED = 100.0
-const ACCELERATION = 0.5
-const FRICTION = 0.2
-const ROCK_DETECT_RADIUS = 200.0
-const ATTACK_COOLDOWN = 0.5
+const SPEED: float = 100.0
+const ACCELERATION: float = 0.5
+const FRICTION: float = 0.2
+const ROCK_DETECT_RADIUS: float = 800.0
+const ATTACK_COOLDOWN: float = 0.5
 
-var attack_timer := 0.0
-var target_rock: Node2D = null 
+var direction: int = 1
+var attack_timer: float = 0.0
+var target_rock: Node2D = null
 
 func _ready() -> void:
 	timer.start()
 
-func _process(delta):
-	attack_timer -= delta
+func _process(delta: float) -> void:
+	attack_timer = max(0.0, attack_timer - delta)
+	var move_vector: Vector2 = Vector2.ZERO
 
-	var move_vector = Vector2.ZERO
-
-	# target rock
-	if target_rock == null or not is_instance_valid(target_rock):
+	# acquire or validate target rock
+	if not target_rock or not is_instance_valid(target_rock):
 		target_rock = _get_highest_hp_rock()
 
-	#target rock and break
 	if target_rock:
 		move_vector = (target_rock.global_position - global_position).normalized()
 		_animate_direction(move_vector)
 
-		# break rock
-		if global_position.distance_to(target_rock.global_position) <= 20:
-			if target_rock.has_method("take_damage") and attack_timer <= 0:
-				var damage = _calculate_damage(target_rock)
-				target_rock.take_damage(damage)
+		if global_position.distance_to(target_rock.global_position) <= 20 and attack_timer <= 0:
+			if target_rock.has_method("take_damage"):
+				target_rock.take_damage(_calculate_damage(target_rock))
 				attack_timer = ATTACK_COOLDOWN
 
-		#clear target
 		if target_rock.current_hp <= 0:
 			target_rock = null
 	else:
-		#wandering
 		move_vector = _get_random_direction()
 		_animate_direction(move_vector)
 
-	# movement
+	# movement smoothing
 	if move_vector.length() > 0:
 		velocity = velocity.lerp(move_vector * SPEED, ACCELERATION)
 	else:
@@ -54,40 +48,33 @@ func _process(delta):
 	move_and_slide()
 
 func _get_random_direction() -> Vector2:
-	var input = Vector2()
-	if direction == 1:
-		input.x += 1
-	if direction == 2:
-		input.x -= 1
-	if direction == 3:
-		input.y += 1
-	if direction == 4:
-		input.y -= 1
-	return input
+	match direction:
+		1: return Vector2(1, 0)
+		2: return Vector2(-1, 0)
+		3: return Vector2(0, 1)
+		4: return Vector2(0, -1)
+	return Vector2.ZERO
 
 func _on_timer_timeout() -> void:
 	direction = randi_range(1, 4)
 
-# find rock
 func _get_highest_hp_rock() -> Node2D:
 	var rocks = get_tree().get_nodes_in_group("rocks")
 	var best_rock: Node2D = null
-	var highest_hp = -1
+	var highest_hp: int = -1
 	for rock in rocks:
 		if "current_hp" in rock:
-			var d = global_position.distance_to(rock.global_position)
-			if d <= ROCK_DETECT_RADIUS and rock.current_hp > highest_hp:
+			var dist = global_position.distance_to(rock.global_position)
+			if dist <= ROCK_DETECT_RADIUS and rock.current_hp > highest_hp:
 				highest_hp = rock.current_hp
 				best_rock = rock
 	return best_rock
 
 func _animate_direction(dir: Vector2) -> void:
 	if abs(dir.x) > abs(dir.y):
-		animated_sprite_2d.play("right" if dir.x > 0 else "left")
+		animated_sprite.play("right" if dir.x > 0 else "left")
 	else:
-		animated_sprite_2d.play("down" if dir.y > 0 else "up")
+		animated_sprite.play("down" if dir.y > 0 else "up")
 
 func _calculate_damage(rock: Node2D) -> int:
-	if not rock.has_method("take_damage") or not ("current_hp" in rock):
-		return 1
 	return max(1, int(rock.current_hp / 5))

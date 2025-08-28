@@ -53,3 +53,4 @@ position = Vector2(-126, -69)
 enemy_scene = ExtResource("12_457mv")
 spawn_radius = 12000.0
 max_enemies = 500
+spawn_interval = 3.005
