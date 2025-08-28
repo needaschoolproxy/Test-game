@@ -11,9 +11,10 @@ var SWING_RADIUS: float = 32
 var SHAKE_AMOUNT: float = 4
 var DAMAGE: int = 1
 var max_goobers: int = 3   # this might help u @glaggleman
-
+var gooberscene = preload("res://scenes/goober.tscn")
 
 # rferences / variables
+@onready var goober_spawner_poppup: Node2D = $GooberSpawnerPoppup
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var swing_timer: Timer = $SwingTimer
 @onready var camera: Camera2D = $Camera2D
@@ -166,3 +167,11 @@ func show_upgrade_menu(station: Node) -> void:
 func hide_upgrade_menu() -> void:
 	if upgrade_menu:
 		upgrade_menu.close_menu()
+
+
+func _on_goober_spawner_poppup() -> void:
+	goober_spawner_poppup.visible = true
+
+func _on_goober_spawner_poppup_spawn_goober() -> void:
+	var new_goober = gooberscene.instantiate()
+	add_child(new_goober)
