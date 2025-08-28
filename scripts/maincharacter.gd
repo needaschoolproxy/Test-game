@@ -22,7 +22,8 @@ var gooberscene = preload("res://scenes/goober.tscn")
 @onready var pickup_label: Label = $"UI/PickupLabel"
 @onready var progressbar: ProgressBar = $"UI/ProgressBar"
 @onready var upgrade_menu: Control = $"UI/UpgradeMenu"
-@onready var goober_popup: Control = $"UI/GooberSpawnerPopup"
+@onready var goober_spawner_poppup: Node2D = $UI/GooberSpawnerPoppup
+
 
 # ------------------------
 # player state
@@ -43,21 +44,21 @@ func _ready() -> void:
 	_update_ui()
 
 	# hide the goober popup initially
-	if goober_popup:
-		goober_popup.visible = false
+	if goober_spawner_poppup:
+		goober_spawner_poppup.visible = false
 
 # ------------------------
 # spawner interaction
 func set_current_spawner(spawner: Node) -> void:
 	current_spawner = spawner
-	if goober_popup:
-		goober_popup.visible = true
+	if goober_spawner_poppup:
+		goober_spawner_poppup.visible = true
 
 func clear_current_spawner(spawner: Node) -> void:
 	if current_spawner == spawner:
 		current_spawner = null
-		if goober_popup:
-			goober_popup.visible = false
+		if goober_spawner_poppup:
+			goober_spawner_poppup.visible = false
 
 # ------------------------
 # input handling

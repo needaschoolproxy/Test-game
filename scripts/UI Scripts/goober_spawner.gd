@@ -1,24 +1,21 @@
-extends StaticBody2D
+extends Area2D
 
 @export var goober_scene: PackedScene
 @export var max_goobers: int = 3
-@export var popup_ui: Control  # assign GooberSpawnerPopup here
 
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))
-	if popup_ui:
-		popup_ui.visible = false  # hide by default
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
-		if popup_ui:
-			popup_ui.visible = true
+	
+		body.set_current_spawner(self)
 		_spawn_goober()
 
-func _on_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player") and popup_ui:
-		popup_ui.visible = false
+func _on_body_exited(body: Node) -> void:
+	if body.is_in_group("player"):
+		body.clear_current_spawner(self)
 
 func _spawn_goober() -> void:
 	if not goober_scene:
@@ -30,7 +27,7 @@ func _spawn_goober() -> void:
 	if current >= max_goobers:
 		return
 
-	# instantiate and add to scene
+	
 	var goober = goober_scene.instantiate()
 	get_tree().current_scene.add_child(goober)
 	goober.global_position = global_position

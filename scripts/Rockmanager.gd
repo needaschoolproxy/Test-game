@@ -3,7 +3,7 @@ extends Node
 @export var pickup_scene: PackedScene
 @export var rock_scene: PackedScene
 @export var rock_sprites: Array[Texture2D] = []
-@export var rock_count: int = 1200
+@export var rock_count: int = 5000
 @export var spawn_radius: float = 12000.0
 @export var show_spawn_border: bool = true
 
