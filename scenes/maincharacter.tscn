@@ -1,9 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://cosrkhugvwqfj"]
+[gd_scene load_steps=47 format=3 uid="uid://cosrkhugvwqfj"]
 
 [ext_resource type="Script" uid="uid://m743ifhjrdbh" path="res://scripts/maincharacter.gd" id="1_0aigr"]
 [ext_resource type="Texture2D" uid="uid://brvdrm67mo4lk" path="res://Sprites/Sprite-0003-sheet.png" id="2_0aigr"]
 [ext_resource type="FontFile" uid="uid://2abf7m1kg5x5" path="res://assets/Daydream DEMO.otf" id="3_gm7jl"]
 [ext_resource type="Script" uid="uid://bjrrl2e2c8xms" path="res://scenes/progress_bar.gd" id="4_7qgm7"]
+[ext_resource type="Script" uid="uid://cfs1jg46feaqq" path="res://scenes/upgrade_menu.gd" id="5_7bx0f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqk66"]
 atlas = ExtResource("2_0aigr")
@@ -329,6 +330,9 @@ size = Vector2(44, 12)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bx0f"]
 bg_color = Color(0.596075, 0.860935, 0.910249, 1)
 
+[sub_resource type="Theme" id="Theme_7bx0f"]
+default_font_size = 5
+
 [node name="PLAYER" type="CharacterBody2D" groups=["player"]]
 collision_mask = 2
 motion_mode = 1
@@ -380,6 +384,47 @@ scale = Vector2(0.4, 0.4)
 theme_override_styles/fill = SubResource("StyleBoxFlat_7bx0f")
 rounded = true
 script = ExtResource("4_7qgm7")
+
+[node name="UpgradeMenu" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_7bx0f")
+script = ExtResource("5_7bx0f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradeMenu"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 101.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradeMenu/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="UpgradeStamina" type="Button" parent="UI/UpgradeMenu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+text = "Stamina"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/UpgradeMenu/VBoxContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="UpgradeSpeed" type="Button" parent="UI/UpgradeMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Speed"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UI/UpgradeMenu/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="UpgradeDamage" type="Button" parent="UI/UpgradeMenu/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Damage
+"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout"]

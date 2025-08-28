@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=4 uid="uid://c8t6xo7xcl14s"]
+[gd_scene load_steps=13 format=4 uid="uid://c8t6xo7xcl14s"]
 
 [ext_resource type="Script" uid="uid://xvbibjhay6hm" path="res://scripts/game_manager.gd" id="1_4c2fu"]
 [ext_resource type="PackedScene" uid="uid://cosrkhugvwqfj" path="res://scenes/maincharacter.tscn" id="1_golqe"]
-[ext_resource type="PackedScene" uid="uid://dtuau4xvhbpj4" path="res://scenes/pickup.tscn" id="2_mo382"]
+[ext_resource type="PackedScene" uid="uid://b0gvtjdk0vjvg" path="res://scenes/rock.tscn" id="2_bw6rn"]
+[ext_resource type="PackedScene" uid="uid://dtuau4xvhbpj4" path="res://scenes/pickup.tscn" id="2_jifap"]
 [ext_resource type="Texture2D" uid="uid://du6ow1v644q0f" path="res://assets/placeholderfloor.png" id="2_nx3wj"]
+[ext_resource type="Texture2D" uid="uid://by6glf4fons3s" path="res://Sprites/3.png" id="3_jifap"]
 [ext_resource type="PackedScene" uid="uid://b02g81q2yqkhp" path="res://scenes/goober.tscn" id="4_4c2fu"]
+[ext_resource type="Texture2D" uid="uid://bplb2gdirg3qs" path="res://Sprites/4.png" id="4_xl61e"]
+[ext_resource type="Texture2D" uid="uid://t0now0vnbuqe" path="res://Sprites/5.png" id="5_0o2or"]
+[ext_resource type="PackedScene" uid="uid://bwf3bmio45gbq" path="res://upgrade_station.tscn" id="6_nshjd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_golqe"]
 texture = ExtResource("2_nx3wj")
@@ -18,7 +23,9 @@ sources/0 = SubResource("TileSetAtlasSource_golqe")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_4c2fu")
-pickup_scene = ExtResource("2_mo382")
+pickup_scene = ExtResource("2_jifap")
+rock_scene = ExtResource("2_bw6rn")
+rock_sprites = Array[Texture2D]([ExtResource("3_jifap"), ExtResource("4_xl61e"), ExtResource("5_0o2or")])
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_golqe")]
 position = Vector2(-1, 1)
@@ -40,3 +47,6 @@ tile_set = SubResource("TileSet_nx3wj")
 
 [node name="Goober" parent="." instance=ExtResource("4_4c2fu")]
 position = Vector2(-95, 15)
+
+[node name="UpgradeStation" parent="." instance=ExtResource("6_nshjd")]
+position = Vector2(-126, -69)

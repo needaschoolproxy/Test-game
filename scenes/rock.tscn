@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0gvtjdk0vjvg"]
 
 [ext_resource type="Texture2D" uid="uid://c8b2uvcq5sxum" path="res://assets/placeholderrock.png" id="1_1di36"]
-[ext_resource type="Script" path="res://scripts/rock.gd" id="1_mek2u"]
+[ext_resource type="Script" uid="uid://obpml6cxun08" path="res://scripts/rock.gd" id="1_mek2u"]
 [ext_resource type="PackedScene" uid="uid://dtuau4xvhbpj4" path="res://scenes/pickup.tscn" id="2_ik6fu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mek2u"]
