@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://du6ow1v644q0f" path="res://assets/placeholderfloor.png" id="4_wu84c"]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [sub_resource type="Animation" id="Animation_tbmy8"]
 length = 0.001
 tracks/0/type = "value"
@@ -35,6 +36,8 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
+=======
+>>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
 =======
 >>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
 [sub_resource type="Animation" id="Animation_oa1go"]
@@ -67,7 +70,10 @@ tracks/1/keys = {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
 [sub_resource type="Animation" id="Animation_tbmy8"]
 length = 0.001
 tracks/0/type = "value"
@@ -95,6 +101,9 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
+<<<<<<< HEAD
+>>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
+=======
 >>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jk1qb"]
 _data = {
@@ -195,9 +204,15 @@ one_shot = true
 [node name="Button2" type="Button" parent="."]
 offset_left = -32.0
 <<<<<<< HEAD
+<<<<<<< HEAD
 offset_top = 34.0
 offset_right = 37.0
 offset_bottom = 62.0
+=======
+offset_top = 35.0
+offset_right = 37.0
+offset_bottom = 61.0
+>>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
 =======
 offset_top = 35.0
 offset_right = 37.0
@@ -211,7 +226,11 @@ script = ExtResource("3_bqqt6")
 
 [node name="QuitButton" type="AnimatedSprite2D" parent="Button2"]
 <<<<<<< HEAD
+<<<<<<< HEAD
 position = Vector2(35.5556, 13.3333)
+=======
+position = Vector2(35.5555, 12.2222)
+>>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
 =======
 position = Vector2(35.5555, 12.2222)
 >>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
