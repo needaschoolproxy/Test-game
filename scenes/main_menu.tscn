@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://wyp3ddbvynt8" path="res://assets/main_menu.gdshader" id="4_8ln24"]
 [ext_resource type="Texture2D" uid="uid://du6ow1v644q0f" path="res://assets/placeholderfloor.png" id="4_wu84c"]
 
+<<<<<<< HEAD
 [sub_resource type="Animation" id="Animation_tbmy8"]
 length = 0.001
 tracks/0/type = "value"
@@ -34,6 +35,8 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
+=======
+>>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
 [sub_resource type="Animation" id="Animation_oa1go"]
 resource_name = "idle"
 length = 4.0
@@ -63,6 +66,36 @@ tracks/1/keys = {
 "values": [0.0, 0.0436332, 0.0, -0.0872665, 0.0]
 }
 
+<<<<<<< HEAD
+=======
+[sub_resource type="Animation" id="Animation_tbmy8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.5, 2.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+>>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jk1qb"]
 _data = {
 &"RESET": SubResource("Animation_tbmy8"),
@@ -161,9 +194,15 @@ one_shot = true
 
 [node name="Button2" type="Button" parent="."]
 offset_left = -32.0
+<<<<<<< HEAD
 offset_top = 34.0
 offset_right = 37.0
 offset_bottom = 62.0
+=======
+offset_top = 35.0
+offset_right = 37.0
+offset_bottom = 61.0
+>>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
 scale = Vector2(0.9, 0.9)
 flat = true
 script = ExtResource("3_bqqt6")
@@ -171,7 +210,11 @@ script = ExtResource("3_bqqt6")
 [node name="Timer2" type="Timer" parent="Button2"]
 
 [node name="QuitButton" type="AnimatedSprite2D" parent="Button2"]
+<<<<<<< HEAD
 position = Vector2(35.5556, 13.3333)
+=======
+position = Vector2(35.5555, 12.2222)
+>>>>>>> parent of 6d0ffa9 (Revert "Reapply "Merge branch 'menu'"")
 sprite_frames = SubResource("SpriteFrames_rtw2f")
 animation = &"up"
 
