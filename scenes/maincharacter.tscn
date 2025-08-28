@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cosrkhugvwqfj"]
+[gd_scene load_steps=47 format=3 uid="uid://cosrkhugvwqfj"]
 
 [ext_resource type="Script" uid="uid://m743ifhjrdbh" path="res://scripts/maincharacter.gd" id="1_0aigr"]
 [ext_resource type="Texture2D" uid="uid://brvdrm67mo4lk" path="res://Sprites/Sprite-0003-sheet.png" id="2_0aigr"]
@@ -332,6 +332,8 @@ bg_color = Color(0.596075, 0.860935, 0.910249, 1)
 [sub_resource type="Theme" id="Theme_7bx0f"]
 default_font_size = 5
 
+[sub_resource type="Theme" id="Theme_7qgm7"]
+
 [node name="PLAYER" type="CharacterBody2D" groups=["player"]]
 collision_mask = 2
 motion_mode = 1
@@ -426,16 +428,13 @@ layout_mode = 2
 text = "Damage
 "
 
-[node name="ResetButton" type="Button" parent="UI"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
 [node name="HPBar" type="ProgressBar" parent="UI"]
 layout_mode = 0
-offset_top = -35.0
-offset_right = 4.0
-offset_bottom = -8.0
+offset_left = 130.0
+offset_top = -102.0
+offset_right = 181.0
+offset_bottom = -75.0
+theme = SubResource("Theme_7qgm7")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout"]
