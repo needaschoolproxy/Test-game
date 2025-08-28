@@ -1,7 +1,7 @@
 extends Node2D
 @onready var button_2: Button = $Button2
 @onready var goobernumber: Label = $Goobernumber
-@onready var player: CharacterBody2D = $""
+@onready var player: CharacterBody2D = $"../.."
 
 
 
@@ -18,8 +18,8 @@ func _process(_delta: float) -> void:
 	
 
 func _on_button_2_pressed() -> void:
-	if player. pickup_count >= 10:
+	if player.pickup_count >= 10:
 		goobers += 1
 		emit_signal("spawn_goober")
-		player. pickup_count -= 10
+		player.pickup_count -= 10
 		

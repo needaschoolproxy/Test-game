@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://cit38ar2k1hpr"]
 
-[ext_resource type="Script" uid="uid://5mx0k4o2q4lk" path="res://scenes/goober_spawner.gd" id="2_7vec2"]
+[ext_resource type="Script" uid="uid://dtgna75br6ji5" path="res://scripts/UI Scripts/goober_spawner.gd" id="2_7vec2"]
 [ext_resource type="Texture2D" uid="uid://csbb0u5hrpco8" path="res://Sprites/goobermaker.png" id="2_hhavf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0roj"]
 size = Vector2(30.5, 6.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vec2"]
-radius = 19.0066
+radius = 23.7592
 
 [node name="StaticBody2D" type="StaticBody2D"]
 scale = Vector2(2, 2)
