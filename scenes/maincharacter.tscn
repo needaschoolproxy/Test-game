@@ -1,9 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://cosrkhugvwqfj"]
+[gd_scene load_steps=48 format=3 uid="uid://cosrkhugvwqfj"]
 
 [ext_resource type="Script" uid="uid://m743ifhjrdbh" path="res://scripts/maincharacter.gd" id="1_0aigr"]
 [ext_resource type="Texture2D" uid="uid://brvdrm67mo4lk" path="res://Sprites/Sprite-0003-sheet.png" id="2_0aigr"]
+[ext_resource type="PackedScene" uid="uid://dnr55gnjvu4md" path="res://scenes/UI Scenes/goober_spawner_poppup.tscn" id="2_7bx0f"]
 [ext_resource type="FontFile" uid="uid://2abf7m1kg5x5" path="res://assets/Daydream DEMO.otf" id="3_gm7jl"]
-[ext_resource type="Script" uid="uid://cfs1jg46feaqq" path="res://scripts/upgrade_menu.gd" id="5_7bx0f"]
+[ext_resource type="Script" uid="uid://cfs1jg46feaqq" path="res://scripts/UI Scripts/upgrade_menu.gd" id="5_7bx0f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqk66"]
 atlas = ExtResource("2_0aigr")
@@ -436,5 +437,9 @@ offset_right = 181.0
 offset_bottom = -75.0
 theme = SubResource("Theme_7qgm7")
 
+[node name="GooberSpawnerPoppup" parent="UI" instance=ExtResource("2_7bx0f")]
+scale = Vector2(0.5, 0.5)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout"]
+[connection signal="spawn_goober" from="UI/GooberSpawnerPoppup" to="." method="_on_goober_spawner_poppup_spawn_goober"]

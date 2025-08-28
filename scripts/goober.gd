@@ -3,13 +3,13 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
 
+var direction: int = 1
 const SPEED: float = 100.0
 const ACCELERATION: float = 0.5
 const FRICTION: float = 0.2
-const ROCK_DETECT_RADIUS: float = 800.0
+const ROCK_DETECT_RADIUS: float = 200.0
 const ATTACK_COOLDOWN: float = 0.5
 
-var direction: int = 1
 var attack_timer: float = 0.0
 var target_rock: Node2D = null
 
